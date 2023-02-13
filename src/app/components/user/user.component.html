@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title slot="" id="title"></ion-title>
+    <ion-icon slot="end" name="add-circle-outline" tappable (click)="dismiss()"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <form (ngSubmit)="submit()" [formGroup]="form">
+        <ion-item lines="full">
+          <ion-label position="fixed">Name</ion-label>
+          <ion-input formControlName="name" placeholder="Name"></ion-input>
+        </ion-item>
+        <ion-item lines="full" >
+          <ion-label position="fixed">Email</ion-label>
+          <ion-input formControlName="email" placeholder="Email"></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="fixed">Phone</ion-label>
+          <ion-input formControlName="phone" placeholder="Phone"></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="fixed">Permission</ion-label>
+          <ion-input formControlName="permission"  placeholder="Permission"></ion-input>
+        </ion-item>
+        <ion-item lines="full" disabled="true">
+          <ion-label position="fixed">Email Verified</ion-label>
+          <ion-input placeholder="Password" [value]="email_verified"></ion-input>
+        </ion-item>
+        <ion-item lines="full" disabled="true">
+          <ion-label position="fixed">Phone Verified</ion-label>
+          <ion-input placeholder="Password" [value]="phone_verified"></ion-input>
+        </ion-item>
+        <button id="btn" class="btn">Save</button>
+      </form>
+      <button id="btn_del" class="btn del" (click)="del()">Delete</button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,9 +1,49 @@
-<ion-header>
+<ion-header class="header">
   <ion-toolbar>
-    <ion-title>Profile</ion-title>
+    <ion-buttons slot="start">
+      <button routerLink="/shelves">Shelves</button>
+      <button routerLink="/users">Users</button>
+      <button routerLink="/settings">Settings</button>
+    </ion-buttons>
+    <ion-title slot="">PROFILE</ion-title>
+    <ion-avatar slot="end" id="profile" tappable (click)="presentPopover($event)">
+      <img src="../../../assets/imgs/profile.jpg">
+    </ion-avatar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <div class="container">
+    <ion-card>
+      <ion-row>
+        <ion-col size="12" sizeXs="12">
+          <div *ngIf="loaded == false">
+            <ion-skeleton-text [animated]="true" style="width: 100%;height: 600px; margin: 0;"></ion-skeleton-text>
+          </div>
+          <ion-toolbar *ngIf="loaded == true">
+            <ion-avatar slot="start">
+              <img src="../../../assets/imgs/profile.jpg" class="img">
+            </ion-avatar>
+            <div slot="start">
+              <ion-toolbar>
+                <ion-label slot="start">Name =>&#160;</ion-label>
+                <ion-label slot="start"> {{user['name']}}</ion-label>
+              </ion-toolbar>
+              <ion-toolbar>
+                <ion-label slot="start">Email =>&#160;</ion-label>
+                <ion-label slot="start"> {{user['email']}}</ion-label>
+                <ion-icon slot="start" name="{{email_icon}}" class="email_icon"></ion-icon>
+              </ion-toolbar>
+              <ion-toolbar>
+                <ion-label slot="start">Phone =>&#160;</ion-label>
+                <ion-label slot="start"> {{user['phone']}}</ion-label>
+              </ion-toolbar>
+            </div>
+          </ion-toolbar>
+        </ion-col>
+        <ion-col>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
 </ion-content>

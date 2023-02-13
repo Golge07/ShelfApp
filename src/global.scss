@@ -24,3 +24,11 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+@import '/node_modules/@swimlane/ngx-datatable/themes/material.scss';
+@import '/node_modules/@swimlane/ngx-datatable/themes/dark.scss';
+@import '/node_modules/@swimlane/ngx-datatable/assets/icons.css';
+
+/* My scss's */
+@import 'theme/header.scss';
+@import 'theme/table.scss';

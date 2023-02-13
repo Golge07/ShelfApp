@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title slot="" id="title"></ion-title>
+    <ion-icon slot="end" name="add-circle-outline" tappable (click)="dismiss()"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <form (ngSubmit)="submit()" [formGroup]="form">
+        <ion-item lines="full">
+          <ion-label position="fixed">Name</ion-label>
+          <ion-input formControlName="name" placeholder="Name" value="asd"></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="fixed">Ingredients</ion-label>
+          <ion-input formControlName="ingredients" placeholder="Ingredients"></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="fixed">Quantity</ion-label>
+          <ion-input formControlName="quantity" placeholder="Quantity"></ion-input>
+        </ion-item>
+        <ion-item lines="full" [disabled]="number_disabled">
+          <ion-label position="fixed">Shelf Number</ion-label>
+          <ion-input formControlName="number"  placeholder="Shelf Number"></ion-input>
+        </ion-item>
+        <button id="btn" class="btn">Save</button>
+      </form>
+      <button id="btn_del" class="btn del" (click)="del()">Delete</button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

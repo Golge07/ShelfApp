@@ -1,0 +1,33 @@
+.table{
+    max-height: 500px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    font-size: 20px;
+    font-weight: bold;
+    min-height: 500px;
+    ion-card-title {
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+    }
+}
+
+ion-select {
+    font-size: medium;
+}
+
+.transparent {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+ion-searchbar {
+    max-width: 90%;
+}
+
+ion-toolbar {
+    --background: transparent;
+}
