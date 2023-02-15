@@ -4,12 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { ShelvesPageRoutingModule } from './shelves-routing.module';
 import { ShelvesPage } from './shelves.page';
+import { MenuComponent } from 'src/app/components/menu/menu.component';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ShelvesPageRoutingModule
+    ShelvesPageRoutingModule,
+    MenuComponent,
   ],
   declarations: [ShelvesPage]
 })

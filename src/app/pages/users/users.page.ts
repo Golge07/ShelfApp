@@ -20,8 +20,8 @@ export class UsersPage implements OnInit {
   filter = [
     { id: 1, name: 'All', type: 'all' },
     { id: 2, name: 'Name', type: 'name' },
-    { id: 3, name: 'Ingredients', type: 'ingredients' },
-    { id: 4, name: 'Shelf Number', type: 'number' },
+    { id: 3, name: 'Email', type: 'email' },
+    { id: 4, name: 'Phone', type: 'phone' },
   ]
 
 
@@ -62,7 +62,7 @@ export class UsersPage implements OnInit {
             const label = not_found?.querySelector('ion-label');
             if (table != null && not_found != null && label != null) {
               table.className = 'transparent';
-              label.innerHTML = 'Error Loading Shelves';
+              label.innerHTML = 'Error Loading Users';
               not_found.className = 'show'
             }
           }
@@ -97,7 +97,7 @@ export class UsersPage implements OnInit {
         const label = not_found?.querySelector('ion-label');
         if (table != null && not_found != null && label != null) {
           table.className = 'transparent';
-          label.innerHTML = 'Error Loading Shelves';
+          label.innerHTML = 'Error Loading Users';
           not_found.className = 'show'
         }
       }
@@ -111,8 +111,7 @@ export class UsersPage implements OnInit {
 
     this.shelfService.get_info().subscribe((data) => {
       if (shelves != null && quantity != null) {
-        shelves.innerHTML = data.response['total_shelves'];
-        quantity.innerHTML = data.response['total_quantity'];
+         this.set_infos_value(data.response['total_shelves'], data.response['total_quantity'])
       }
     }, (error) => {
       if (error.error.message == "Unauthenticated.")

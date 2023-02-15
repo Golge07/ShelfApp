@@ -12,7 +12,7 @@ export class UserService {
   Header = new HttpHeaders({
     'Content-Type': 'application/json',
     'Accept': 'application/json',
-    'Authorization': 'Bearer ' + localStorage.getItem('user_token')
+    'Authorization': 'Bearer ' + localStorage.getItem('user_token')?.trim()
   });
   login(credentials): Observable<string> {
     let myHeaders = new HttpHeaders();
@@ -55,7 +55,7 @@ export class UserService {
   }
 
   logout() {
-    this.http.post<any>(this.api_url + 'logout', {}, { headers: this.Header }).subscribe(
+    this.http.post<any>(this.api_url + 'user/logout', {}, { headers: this.Header }).subscribe(
       data => {
         console.log(data);
         localStorage.removeItem('user_token');

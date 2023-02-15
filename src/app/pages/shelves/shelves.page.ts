@@ -27,8 +27,10 @@ export class ShelvesPage implements OnInit {
 
 
   ngOnInit() {
-    this.get_all_shelves();
-    this.get_infos();
+    (async () => {
+      await this.get_infos();
+      await this.get_all_shelves();
+    })();
   }
 
   search_shelf(event) {
@@ -108,12 +110,12 @@ export class ShelvesPage implements OnInit {
     });
   }
 
-  get_infos() {
+  async get_infos() {
     const shelves = document.getElementById('total_shelves');
     const quantity = document.getElementById('total_quantity');
     const user = document.getElementById('total_user');
 
-    this.shelfService.get_info().subscribe((data) => {
+    await this.shelfService.get_info().subscribe((data) => {
       if (shelves != null && quantity != null) {
         shelves.innerHTML = data.response['total_shelves'];
         quantity.innerHTML = data.response['total_quantity'];
@@ -125,7 +127,7 @@ export class ShelvesPage implements OnInit {
         this.set_infos_value('err', 'err');
     }
     );
-    this.userService.info().subscribe((data) => {
+    await this.userService.info().subscribe((data) => {
       if (user != null)
         user.innerHTML = data.response['total_users'];
     },
@@ -162,7 +164,7 @@ export class ShelvesPage implements OnInit {
       this.notifications.push({
         title: 'Error',
         message: `There was an error loading the notifications`,
-        icon: 'checkmark-circle',
+        icon: 'alert-circle-outline',
         color: 'danger',
         type: 'err'
       });

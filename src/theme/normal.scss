@@ -1,0 +1,17 @@
+@media screen and (max-width: 768px) {
+    #menu {
+        display: block;
+    }
+    .page-buttons{
+        display: none;
+    }
+}
+
+@media  screen and (min-width: 768px) {
+    #menu {
+        display: none;
+    }
+    .page-buttons{
+        display: flex;
+    }
+}

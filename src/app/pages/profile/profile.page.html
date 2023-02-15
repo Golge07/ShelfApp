@@ -1,6 +1,7 @@
 <ion-header class="header">
   <ion-toolbar>
-    <ion-buttons slot="start">
+    <ion-menu-button slot="start" id="menu"></ion-menu-button>
+    <ion-buttons slot="start" class="page-buttons">
       <button routerLink="/shelves">Shelves</button>
       <button routerLink="/users">Users</button>
       <button routerLink="/settings">Settings</button>
@@ -47,3 +48,5 @@
     </ion-card>
   </div>
 </ion-content>
+
+<app-menu></app-menu>

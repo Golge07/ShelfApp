@@ -13,7 +13,7 @@
           <ion-label position="fixed">Name</ion-label>
           <ion-input formControlName="name" placeholder="Name"></ion-input>
         </ion-item>
-        <ion-item lines="full" >
+        <ion-item lines="full">
           <ion-label position="fixed">Email</ion-label>
           <ion-input formControlName="email" placeholder="Email"></ion-input>
         </ion-item>
@@ -23,13 +23,17 @@
         </ion-item>
         <ion-item lines="full">
           <ion-label position="fixed">Permission</ion-label>
-          <ion-input formControlName="permission"  placeholder="Permission"></ion-input>
+          <ion-input formControlName="permission" placeholder="Permission"></ion-input>
         </ion-item>
-        <ion-item lines="full" disabled="true">
+        <ion-item lines="full" *ngIf="this.type != 'up'">
+          <ion-label position="fixed">Password</ion-label>
+          <ion-input formControlName="password" type="password" placeholder="Password"></ion-input>
+        </ion-item>
+        <ion-item lines="full" disabled="true" *ngIf="this.type != 'add'">
           <ion-label position="fixed">Email Verified</ion-label>
           <ion-input placeholder="Password" [value]="email_verified"></ion-input>
         </ion-item>
-        <ion-item lines="full" disabled="true">
+        <ion-item lines="full" disabled="true" *ngIf="this.type != 'add'">
           <ion-label position="fixed">Phone Verified</ion-label>
           <ion-input placeholder="Password" [value]="phone_verified"></ion-input>
         </ion-item>
