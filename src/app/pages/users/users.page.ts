@@ -2,9 +2,8 @@ import { UserComponent } from './../../components/user/user.component';
 import { ShelfService } from 'src/app/services/http/shelf.service';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/http/user.service';
-import { PopoverController, ModalController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
-import { PopoverComponent } from 'src/app/components/popover-component/popover.component';
 
 @Component({
   selector: 'app-users',
@@ -13,7 +12,7 @@ import { PopoverComponent } from 'src/app/components/popover-component/popover.c
 })
 export class UsersPage implements OnInit {
 
-  constructor(private popCtrl: PopoverController, private shelfService: ShelfService, private userService: UserService, private router: Router, private modalCtr: ModalController) { }
+  constructor(private shelfService: ShelfService, private userService: UserService, private router: Router, private modalCtr: ModalController) { }
   loaded = false;
   users: Array<any> = [];
   search_filter = 'all';
@@ -24,10 +23,9 @@ export class UsersPage implements OnInit {
     { id: 4, name: 'Phone', type: 'phone' },
   ]
 
-
-  ngOnInit() {
-    this.get_all_users();
-    this.get_infos();
+  async ngOnInit() {
+   await this.get_all_users();
+   await this.get_infos();
   }
 
   search_users(event) {
@@ -51,7 +49,6 @@ export class UsersPage implements OnInit {
         }
       },
         (error) => {
-          console.log(error);
           if (error.error.message == "Unauthenticated.") {
             {
               this.router.navigate(['/login']);
@@ -91,7 +88,7 @@ export class UsersPage implements OnInit {
       }
     }, (error) => {
       if (error.error.message == "Unauthenticated.") {
-        this.unauthorized();
+        this.userService.logout();
       } else {
         this.loaded = true;
         const label = not_found?.querySelector('ion-label');
@@ -104,29 +101,23 @@ export class UsersPage implements OnInit {
     });
   }
 
-  get_infos() {
-    const shelves = document.getElementById('total_shelves');
-    const quantity = document.getElementById('total_quantity');
-    const user = document.getElementById('total_user');
-
-    this.shelfService.get_info().subscribe((data) => {
-      if (shelves != null && quantity != null) {
-         this.set_infos_value(data.response['total_shelves'], data.response['total_quantity'])
-      }
+  async get_infos() {
+    await this.shelfService.get_info().subscribe((data) => {
+      this.set_infos_value(data.response['total_shelves'], data.response['total_quantity'])
     }, (error) => {
       if (error.error.message == "Unauthenticated.")
-        this.unauthorized();
+        this.userService.logout();
       else
         this.set_infos_value('err', 'err');
     }
     );
-    this.userService.info().subscribe((data) => {
-      if (user != null)
-        user.innerHTML = data.response['total_users'];
+    await this.userService.info().subscribe((data) => {
+
+      this.set_infos_value(undefined, undefined, data.response['total_users'])
     },
       (error) => {
         if (error.error.message == "Unauthenticated.")
-          this.unauthorized();
+          this.userService.logout();
         else
           this.set_infos_value(undefined, undefined, 'err');
       });
@@ -152,25 +143,13 @@ export class UsersPage implements OnInit {
     }
   }
 
-  async presentPopover(e: Event) {
-    const popover = await this.popCtrl.create({
-      component: PopoverComponent,
-      event: e,
-    });
-    await popover.present();
-  }
-
-  unauthorized() {
-    this.router.navigate(['/login']);
-    localStorage.removeItem('user_token');
-  }
-
   set_infos_value(shelves_?: | number | 'err' | undefined, quantity_?: | number | 'err' | undefined, user_?: | number | 'err' | undefined) {
     const shelves = document.getElementById('total_shelves');
     const quantity = document.getElementById('total_quantity');
+
     const user = document.getElementById('total_user');
     if (shelves != null && quantity != null && user != null) {
-      shelves_ == undefined ? null : user.innerHTML = shelves_.toString() || 'error';
+      shelves_ == undefined ? null : shelves.innerHTML = shelves_.toString() || 'error';
       quantity_ == undefined ? null : quantity.innerHTML = quantity_.toString() || 'error';
       user_ == undefined ? null : user.innerHTML = user_.toString() || 'error';
     }

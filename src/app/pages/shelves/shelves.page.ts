@@ -4,7 +4,6 @@ import { Component, OnInit } from '@angular/core';
 import { ShelfService } from 'src/app/services/http/shelf.service';
 import { ModalController, PopoverController } from '@ionic/angular';
 import { UserService } from 'src/app/services/http/user.service';
-import { PopoverComponent } from 'src/app/components/popover-component/popover.component';
 @Component({
   selector: 'app-shelves',
   templateUrl: './shelves.page.html',
@@ -12,7 +11,7 @@ import { PopoverComponent } from 'src/app/components/popover-component/popover.c
 })
 export class ShelvesPage implements OnInit {
 
-  constructor(private popCtrl: PopoverController, private shelfService: ShelfService, private userService: UserService, private router: Router, private modalCtr: ModalController) { }
+  constructor(private shelfService: ShelfService, private userService: UserService,private modalCtr: ModalController) { }
   loaded = false;
   shelves: Array<any> = [];
   search_filter = 'all';
@@ -111,9 +110,9 @@ export class ShelvesPage implements OnInit {
   }
 
   async get_infos() {
-    const shelves = document.getElementById('total_shelves');
-    const quantity = document.getElementById('total_quantity');
-    const user = document.getElementById('total_user');
+    const shelves = document.getElementById('total_shelves_');
+    const quantity = document.getElementById('total_quantity_');
+    const user = document.getElementById('total_user_');
 
     await this.shelfService.get_info().subscribe((data) => {
       if (shelves != null && quantity != null) {
@@ -202,14 +201,6 @@ export class ShelvesPage implements OnInit {
         });
       }
     }
-  }
-
-  async presentPopover(e: Event) {
-    const popover = await this.popCtrl.create({
-      component: PopoverComponent,
-      event: e,
-    });
-    await popover.present();
   }
 
   set_infos_value(shelves_?: | number | 'err' | undefined, quantity_?: | number | 'err' | undefined, user_?: | number | 'err' | undefined) {

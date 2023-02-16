@@ -1,19 +1,22 @@
-import { HeaderComponent} from 'src/app/components/header/header.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
 import { IonicModule } from '@ionic/angular';
-import { UsersPageRoutingModule } from './users-routing.module';
-import { UsersPage } from './users.page';
+
+import { UserPageRoutingModule } from './user-routing.module';
+
+import { UserPage } from './user.page';
+import { HeaderComponent} from 'src/app/components/header/header.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    UsersPageRoutingModule,
+    UserPageRoutingModule,
     HeaderComponent
   ],
-  declarations: [UsersPage]
+  declarations: [UserPage]
 })
-export class UsersPageModule {}
+export class UserPageModule {}

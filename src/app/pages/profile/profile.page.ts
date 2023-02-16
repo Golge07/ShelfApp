@@ -1,5 +1,3 @@
-import { PopoverController } from '@ionic/angular';
-import { PopoverComponent } from 'src/app/components/popover-component/popover.component';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/http/user.service';
@@ -11,7 +9,7 @@ import { UserService } from 'src/app/services/http/user.service';
 })
 export class ProfilePage implements OnInit {
 
-  constructor(private popCtrl: PopoverController, private userService: UserService, private router: Router) { }
+  constructor( private userService: UserService) { }
   loaded = true;
   user = {};
   email_icon = "close-circle-outline";
@@ -31,12 +29,4 @@ export class ProfilePage implements OnInit {
       console.log(err);
     });
   }
-  async presentPopover(e: Event) {
-    const popover = await this.popCtrl.create({
-      component: PopoverComponent,
-      event: e,
-    });
-    await popover.present();
-  }
-
 }

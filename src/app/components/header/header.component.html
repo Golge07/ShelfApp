@@ -1,3 +1,17 @@
+<ion-header class="header">
+  <ion-toolbar>
+    <ion-menu-button slot="start" id="menu"></ion-menu-button>
+    <ion-buttons slot="start" class="page-buttons">
+      <button (click)="shelves()">Shelves</button>
+      <button (click)="users()">Users</button>
+      <button (click)="settings()">Settings</button>
+    </ion-buttons>
+    <ion-title slot="">{{page}}</ion-title>
+    <ion-avatar slot="end" id="profile" id="pop" tappable >
+      <img src="../../../assets/imgs/profile.jpg">
+    </ion-avatar>
+  </ion-toolbar>
+</ion-header>
 <ion-menu contentId="menu">
   <ion-header>
     <ion-toolbar class="profile">
@@ -37,6 +51,28 @@
       <ion-label slot="">Logout</ion-label>
       <ion-icon name="chevron-forward-outline"></ion-icon>
     </ion-item>
-
   </ion-content>
 </ion-menu>
+
+
+
+<ion-popover trigger="pop">
+  <ng-template>
+    <ion-item tappable (click)="profile()">
+      <ion-icon name="{{icon.profile}}" slot="start"></ion-icon>
+      <ion-label slot="">Profile</ion-label>
+    </ion-item>
+    <ion-item tappable (click)="settings('user')">
+      <ion-icon name="{{icon.settings}}" slot="start"></ion-icon>
+      <ion-label slot="">Settings</ion-label>
+    </ion-item>
+    <ion-item tappable (click)="theme()">
+      <ion-icon name="{{icon.theme}}" slot="start"></ion-icon>
+      <ion-label slot="">Theme</ion-label>
+    </ion-item>
+    <ion-item tappable (click)="logout()">
+      <ion-icon name="{{icon.logout}}" slot="start"></ion-icon>
+      <ion-label slot="">Logout</ion-label>
+    </ion-item>
+  </ng-template>
+</ion-popover>

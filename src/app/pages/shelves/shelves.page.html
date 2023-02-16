@@ -1,17 +1,4 @@
-<ion-header class="header">
-  <ion-toolbar>
-    <ion-menu-button id="menu" slot="start"></ion-menu-button>
-    <ion-buttons slot="start" class="page-buttons">
-      <button routerLink="/shelves">Shelves</button>
-      <button routerLink="/users">Users</button>
-      <button routerLink="/settings">Settings</button>
-    </ion-buttons>
-    <ion-title slot="">Shelves </ion-title>
-    <ion-avatar tappable slot="end" (click)="presentPopover($event)">
-      <img src="../../../assets/imgs/profile.jpg">
-    </ion-avatar>
-  </ion-toolbar>
-</ion-header>
+<app-header page="Shelves"></app-header>
 
 <ion-content>
   <ion-grid>
@@ -21,7 +8,7 @@
           <ion-card-content>
             <ion-icon size="large" slot="start" name="bookmarks"></ion-icon>
             <h1>Shelves</h1>
-            <p id="total_shelves"></p>
+            <p id="total_shelves_"></p>
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -30,7 +17,7 @@
           <ion-card-content>
             <ion-icon size="large" slot="start" name="cube"></ion-icon>
             <h1>Item Quantity</h1>
-            <p id="total_quantity"></p>
+            <p id="total_quantity_"></p>
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -39,7 +26,7 @@
           <ion-card-content>
             <ion-icon size="large" slot="start" name="People"></ion-icon>
             <h1>Total Users</h1>
-            <p id="total_user"></p>
+            <p id="total_user_"></p>
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -122,5 +109,3 @@
     </ion-row>
   </ion-grid>
 </ion-content>
-
-<app-menu></app-menu>
