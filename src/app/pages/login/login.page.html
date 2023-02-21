@@ -8,7 +8,7 @@
         <form (ngSubmit)="login()" [formGroup]="credentials">
           <ion-item>
             <ion-icon slot="start" color="primary" name="person"></ion-icon>
-            <input type="email" formControlName="email" inputmode="email" class="input" placeholder="E-mail">
+            <input type="email" formControlName="email"  class="input" placeholder="E-mail">
           </ion-item>
           <ion-item>
             <ion-icon slot="start" color="primary" name="lock-closed"></ion-icon>
@@ -16,7 +16,7 @@
               placeholder="Şifre">
             <ion-icon class="showHidePwd" slot="end" [name]="pwdIcon" (click)="togglePwd()"></ion-icon>
           </ion-item>
-          <button type="submit" class="btn">Giriş Yap</button>
+          <button type="submit" class="btn">Login</button>
         </form>
         <ion-label>Don't have a account? Then go to <ion-label tappable color="primary" routerLink="/register">Register</ion-label> page!</ion-label>
 

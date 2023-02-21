@@ -1,75 +1,27 @@
-ion-card {
-    margin: auto;
-    width: 50%;
-    height: 60%;
+ion-item{
+    --background:transparent;
+}
 
-    ion-avatar {
+ion-grid{
+    --background:transparent;
+    ion-row{
         margin: auto;
-        width: 20%;
-        height: 20%;
-        --border-radius: 25px;
-    }
-
-    div {
-        height: 50%;
-        margin-left: 5%;
-        width: 50%;
-    }
-
-    ion-label {
-        font-size: 120%;
     }
 }
 
-.green {
-    color: green;
+
+.small{
+   width: 300px;
 }
 
-.red {
-    color: red !important;
+.big{
+   width: 500px;
 }
 
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+.body{
     height: 100%;
-}
-
-.email_icon {
-    margin-left: 2%;
-    width: 20px;
-    height: 20px;
-}
-
-.header {
-    ion-avatar {
-        --size: 50px;
-        --border-radius: 50%;
-        --border-width: 2px;
-        --border-style: solid;
-        --border-color: #fff;
-        --background: #fff;
-        --box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-        margin-right: 25px;
-    }
-
-    button {
-        margin-left: 2.5%;
-        width: 100px;
-        height: 35px;
-        background: transparent;
-        border-radius: 25px;
-        color: white;
-        border: 1px solid blue;
-        font-size: 15px;
-        font-weight: 400;
-        &:hover {
-            background: #0000ff;
-        }
-    }
-
-    ion-title{
-        font-size: 18px;
-    }
+    background-image: url('https://cdn.discordapp.com/attachments/985637528029761589/1077618526132641864/1215771.png');
+    background-repeat: no-repeat;
+    background-size: cover;
 }

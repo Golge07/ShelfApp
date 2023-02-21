@@ -7,10 +7,6 @@ const routes: Routes = [
   {
     path: '',
     component: SettingsPage
-  },
-  {
-    path: 'user',
-    loadChildren: () => import('./user/user.module').then( m => m.UserPageModule)
   }
 ];
 

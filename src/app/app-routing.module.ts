@@ -34,8 +34,8 @@ const routes: Routes = [
     loadChildren: () => import('./pages/settings/settings.module').then( m => m.SettingsPageModule)
   },
   {
-    path: 'settings/user',
-    loadChildren: () => import('./pages/settings/user/user.module').then( m => m.UserPageModule)
+    path: '**',
+    redirectTo: 'login'
   }
 ];
 

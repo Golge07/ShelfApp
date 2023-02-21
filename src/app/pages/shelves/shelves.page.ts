@@ -11,7 +11,7 @@ import { UserService } from 'src/app/services/http/user.service';
 })
 export class ShelvesPage implements OnInit {
 
-  constructor(private shelfService: ShelfService, private userService: UserService,private modalCtr: ModalController) { }
+  constructor(private shelfService: ShelfService, private userService: UserService, private modalCtr: ModalController) { }
   loaded = false;
   shelves: Array<any> = [];
   search_filter = 'all';
@@ -113,7 +113,6 @@ export class ShelvesPage implements OnInit {
     const shelves = document.getElementById('total_shelves_');
     const quantity = document.getElementById('total_quantity_');
     const user = document.getElementById('total_user_');
-
     await this.shelfService.get_info().subscribe((data) => {
       if (shelves != null && quantity != null) {
         shelves.innerHTML = data.response['total_shelves'];
@@ -159,6 +158,7 @@ export class ShelvesPage implements OnInit {
     }
   }
   generateNotifications(err?: 'err') {
+    this.notifications = [];
     if (err == 'err') {
       this.notifications.push({
         title: 'Error',

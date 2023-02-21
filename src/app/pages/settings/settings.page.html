@@ -1,5 +1,47 @@
-<app-header page="Settings"></app-header>
-
 <ion-content>
-
+    <ion-card>
+        <ion-card-content>
+            <ion-card-title>Options</ion-card-title>
+            <ion-item class="lang" lines="full">
+                <ion-label>Langueage</ion-label>
+                <ion-select [(ngModel)]="lang">
+                    <ion-select-option value="en">English</ion-select-option>
+                    <ion-select-option value="tr">Turkey</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <ion-item class="lang" lines="full">
+                <ion-label>Theme</ion-label>
+                <ion-select [(ngModel)]="theme">
+                    <ion-select-option value="light">Light</ion-select-option>
+                    <ion-select-option value="dark">Dark</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <ion-card-title>User Options</ion-card-title>
+            <ion-item lines="full">
+                <ion-label>Name</ion-label>
+                <ion-input [value]="user['name']"></ion-input>
+                <ion-button>Save</ion-button>
+            </ion-item>
+            <ion-item lines="full">
+                <ion-label>Email</ion-label>
+                <ion-input [value]="user['email']" disabled="true"></ion-input>
+                <ion-button>Send</ion-button>
+            </ion-item>
+            <ion-item lines="full">
+                <ion-label>Phone</ion-label>
+                <ion-input [value]="user['phone']"></ion-input>
+                <ion-button>Save</ion-button>
+            </ion-item>
+            <ion-item lines="full">
+                <ion-label>Email Verified</ion-label>
+                <ion-input [value]="user['email_verified']" disabled="true"></ion-input>
+                <ion-button>Send</ion-button>
+            </ion-item>
+            <ion-item lines="full">
+                <ion-label>Phone Verified</ion-label>
+                <ion-input [value]="user['phone_verified']" disabled="true"></ion-input>
+                <ion-button>Send</ion-button>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
 </ion-content>

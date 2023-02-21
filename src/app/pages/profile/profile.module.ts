@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { ProfilePageRoutingModule } from './profile-routing.module';
 import { ProfilePage } from './profile.page';
-import { HeaderComponent } from 'src/app/components/header/header.component';
 
 
 @NgModule({
@@ -13,7 +12,6 @@ import { HeaderComponent } from 'src/app/components/header/header.component';
     FormsModule,
     IonicModule,
     ProfilePageRoutingModule,
-    HeaderComponent
   ],
   declarations: [ProfilePage]
 })

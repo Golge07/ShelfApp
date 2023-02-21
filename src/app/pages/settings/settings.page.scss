@@ -1,0 +1,25 @@
+ion-card{
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+    
+
+    ion-card-content{
+        ion-item {
+            --background: transparent;
+            ion-label {
+                font-size: 14px;
+            }
+        
+            ion-select {
+                ion-select-option {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}

@@ -4,11 +4,10 @@ import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/http/user.service';
 import { ModalController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-users',
   templateUrl: './users.page.html',
-  styleUrls: ['./users.page.scss'],
+  styleUrls: ['./users.page.scss']
 })
 export class UsersPage implements OnInit {
 

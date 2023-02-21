@@ -1,4 +1,3 @@
-import { HeaderComponent} from 'src/app/components/header/header.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -12,7 +11,6 @@ import { UsersPage } from './users.page';
     FormsModule,
     IonicModule,
     UsersPageRoutingModule,
-    HeaderComponent
   ],
   declarations: [UsersPage]
 })
