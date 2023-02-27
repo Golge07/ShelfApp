@@ -1,5 +1,4 @@
 import { NavController } from '@ionic/angular';
-import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/http/user.service';
 
@@ -87,8 +86,13 @@ export class ProfilePage implements OnInit {
     }
   }
 
-  settings() {
-    this.navCtrl.navigateRoot('/settings', { animationDirection: 'forward', animated: true });
+  changePhoto() {
+    // kullanıcıdan fotoğraf seçmesi istenir
+    // seçilen fotoğraf api ye post edilir yüklenir
+    // yüklenen fotoğrafın url'i alınır
+    // url kullanıcı bilgileri güncellenir
+
+
   }
   
 }
