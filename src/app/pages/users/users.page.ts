@@ -23,8 +23,8 @@ export class UsersPage implements OnInit {
   ]
 
   async ngOnInit() {
-   await this.get_all_users();
-   await this.get_infos();
+    await this.get_all_users();
+    await this.get_infos();
   }
 
   search_users(event) {
@@ -48,6 +48,8 @@ export class UsersPage implements OnInit {
         }
       },
         (error) => {
+          console.log(error);
+          
           if (error.error.message == "Unauthenticated.") {
             {
               this.router.navigate(['/login']);
@@ -102,7 +104,7 @@ export class UsersPage implements OnInit {
 
   async get_infos() {
     await this.shelfService.get_info().subscribe((data) => {
-      this.set_infos_value(data.response['total_shelves'], data.response['total_quantity'])
+      this.set_infos_value(data['total_shelves'], data['total_quantity'])
     }, (error) => {
       if (error.error.message == "Unauthenticated.")
         this.userService.logout();
@@ -111,8 +113,7 @@ export class UsersPage implements OnInit {
     }
     );
     await this.userService.info().subscribe((data) => {
-
-      this.set_infos_value(undefined, undefined, data.response['total_users'])
+      this.set_infos_value(undefined, undefined, data['total_users'])
     },
       (error) => {
         if (error.error.message == "Unauthenticated.")

@@ -26,11 +26,10 @@ export class UserComponent implements OnInit {
     name: [''],
     email: [''],
     phone: [''],
-    permission: ['']
+    permission: [''],
+    password: ['']
   });
   ngOnInit() {
-    console.log(this.user);
-    
     this.btn = document.getElementById('btn');
     this.btn_del = document.getElementById('btn_del');
     this.title = document.getElementById('title');
@@ -59,7 +58,7 @@ export class UserComponent implements OnInit {
     this.modalCtr.dismiss();
   }
   submit() {
-    if (this.form.value.name == "" || this.form.value.email == "" || this.form.value.phone == "" || this.form.value.permission == "") {
+    if ((this.form.value.name == "" || this.form.value.email == "" || this.form.value.phone == "" || this.form.value.permission == "") && this.type == 'up') {
       this.alert.presentAlert('Please Fill All Fields', "", "", ['ok']);
     }
     else {
@@ -77,31 +76,45 @@ export class UserComponent implements OnInit {
         });
       }
       else {
-        this.userService.add(this.form.value).subscribe(data => {
+        const val = {
+          name: this.form.value.name,
+          email: this.form.value.email,
+          phone: this.form.value.phone,
+          permission: this.form.value.permission,
+          password: this.form.value.password,
+          add: 'true'
+        }
+        this.userService.add(val).subscribe(data => {
+          console.log(data);
+
           if (data.error != undefined) {
             this.alert.presentToast(data.error, 3000, 'top', 'danger');
+            this.refresh();
           }
           else {
             this.alert.presentToast('user Successfully Added', 3000, 'top', 'success');
             this.refresh();
           }
         }, error => {
+          console.log(error);
           this.alert.presentToast('Error Adding user', 3000, 'top', 'danger');
         });
       }
     }
   }
   del() {
-    this.userService.delete(this.user.number).subscribe(data => {
+    this.userService.delete({ 'email': this.user.email }).subscribe(data => {
       if (data.error != undefined) {
         this.alert.presentToast(data.error, 3000, 'top', 'danger');
       }
       else {
         this.alert.presentToast('user Successfully Deleted', 3000, 'top', 'success');
         this.refresh();
+        this.dismiss();
       }
 
     }, error => {
+      console.log(error);
       this.alert.presentToast('Error Deleting user', 3000, 'top', 'danger');
     });
   }

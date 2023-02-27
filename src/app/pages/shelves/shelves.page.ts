@@ -36,7 +36,6 @@ export class ShelvesPage implements OnInit {
     const table = document.getElementById('table');
     const not_found = document.getElementById('not-found');
     const search = event.target.value;
-
     if (search.trim() != '') {
       this.shelfService.search_shelf({ 'type': this.search_filter, 'value': search }).subscribe((data) => {
         this.shelves = data['response'];
@@ -53,7 +52,6 @@ export class ShelvesPage implements OnInit {
         }
       },
         (error) => {
-          console.log(error);
           if (error.error.message == "Unauthenticated.") {
             {
               this.userService.logout();
@@ -69,8 +67,6 @@ export class ShelvesPage implements OnInit {
           }
         });
     } else {
-      console.log('empty');
-
       this.get_all_shelves();
     }
   }
@@ -115,8 +111,8 @@ export class ShelvesPage implements OnInit {
     const user = document.getElementById('total_user_');
     await this.shelfService.get_info().subscribe((data) => {
       if (shelves != null && quantity != null) {
-        shelves.innerHTML = data.response['total_shelves'];
-        quantity.innerHTML = data.response['total_quantity'];
+        shelves.innerHTML = data['total_shelves'];
+        quantity.innerHTML = data['total_quantity'];
       }
     }, (error) => {
       if (error.error.message == "Unauthenticated.")
@@ -127,7 +123,7 @@ export class ShelvesPage implements OnInit {
     );
     await this.userService.info().subscribe((data) => {
       if (user != null)
-        user.innerHTML = data.response['total_users'];
+        user.innerHTML = data['total_users'].toString();
     },
       (error) => {
         if (error.error.message == "Unauthenticated.")
@@ -157,6 +153,7 @@ export class ShelvesPage implements OnInit {
       return await modal.present();
     }
   }
+
   generateNotifications(err?: 'err') {
     this.notifications = [];
     if (err == 'err') {

@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class UserService {
   constructor(private http: HttpClient, private router: Router) { }
   api_url = "http://localhost:8000/api/";
-  
+
   login(credentials): Observable<string> {
     let myHeaders = new HttpHeaders();
     myHeaders.append('Content-Type', 'application/json');
@@ -63,7 +63,6 @@ export class UserService {
   verify_email(): Observable<any> {
     return this.http.post<any>(this.api_url + 'user/verify/send', {}, { headers: this.create_header() });
   }
-
 
   create_header() {
     return new HttpHeaders({

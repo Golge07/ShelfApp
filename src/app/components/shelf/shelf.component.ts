@@ -95,6 +95,7 @@ export class ShelfComponent implements OnInit {
       else {
         this.alert.presentToast('Shelf Successfully Deleted', 3000, 'top', 'success');
         this.refresh();
+        this.dismiss();
       }
 
     }, error => {
